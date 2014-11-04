@@ -33,3 +33,4 @@ Website/App to allow individuals to find and book photographers for various even
 - Capital to higher individuals for design and website backend
 - Marketing to increase numbers of  photographer profiles in all major markets and tourist countries.
     + “Better than a selfie anywhere in the World”
+    + "You're beautiful make sure your photos are too"
