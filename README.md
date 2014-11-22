@@ -1,4 +1,4 @@
-# PhotoKnect #
+# prazie #
 
 ## Purpose ##
 Website/App to allow individuals to find and book photographers for various events including tourist photography.
@@ -12,9 +12,9 @@ Website/App to allow individuals to find and book photographers for various even
 5. Family Portraits 
 
 ## Revenue ##
-- PhotoKnect will collect a percentage of every booking from website or App
+- prazie will collect a percentage of every booking from website or App
 - Prices for photographers are up to the discretion of photographers
-- all payments go through PhotoKnect
+- all payments go through prazie
     + ApplePay is necessary
         * Get this app out early because there is a higher chance that Apple will feature us in an "ApplePay compatible" section of the App Store
 
@@ -33,3 +33,4 @@ Website/App to allow individuals to find and book photographers for various even
 - Capital to higher individuals for design and website backend
 - Marketing to increase numbers of  photographer profiles in all major markets and tourist countries.
     + “Better than a selfie anywhere in the World”
+    + "You're beautiful make sure your photos are too"
