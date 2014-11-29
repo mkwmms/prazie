@@ -275,6 +275,12 @@
 				width: 100%;
 			}
 
+		.image.profile {
+			display: block;
+			width: 100%;
+			clip-path: url(#profile);
+		}
+
 /* Icon */
 
 	.icon {
