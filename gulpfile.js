@@ -1,67 +1,75 @@
 var gulp = require('gulp');
-// var coffee = require('gulp-coffee');
+var config = require('./config.json');
+
+var jshint = require('gulp-jshint');
+var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
-var jpegtran = require('imagemin-jpegtran');
 var cache = require('gulp-cached');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
+var rsync = require('gulp-rsync');
 
 // https://www.npmjs.com/package/favicons/
 
-// sips -s format png *.* -
-// ffor file in *.jpg; do sips -s format png $file --out $file.png; done
-
-var paths = {
-  scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
-  images: ['client/images/**/*', 'client/profile/images/**/*']
-  // images: 'client/images/**/*'
-};
-
 // Not all tasks need to use streams
-// A gulpfile is just another node program and you can use all packages 
-// available on npm
 gulp.task('clean', function(cb) {
-  // You can use multiple globbing patterns as you would with `gulp.src`
-  del(['build'], cb);
+  del([config.js.dest, config.css.dest], cb);
 });
 
-gulp.task('scripts', ['clean'], function() {
-  // Minify and copy all JavaScript (except vendor scripts)
+var cmq = require('gulp-combine-media-queries');
+
+gulp.task('cmq', function () {
+  gulp.src(config.css.src)
+    .pipe(cmq({
+      log: true
+    }))
+    .pipe(gulp.dest(config.css.dest));
+});
+
+gulp.task('js', ['clean'], function() {
+  // Minify and copy all JavaScript (except vendor js)
   // with sourcemaps all the way down
-  return gulp.src(paths.scripts)
+  return gulp.src(config.js.src)
     .pipe(sourcemaps.init())
       // .pipe(coffee())
+      .pipe(jshint())
       .pipe(uglify())
       .pipe(concat('all.min.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest(config.js.dest));
 });
 
-// Copy all static images
-gulp.task('images', ['clean'], function() {
-  return gulp.src(paths.images)
-    // Pass in options to the task
-    // .pipe(cache(imagemin({ 
-    //   optimizationLevel: 7, 
-    //   progressive: true, 
-    //   interlaced: true,
-    //   use: [jpegtran()]
-    // })))
+// // Lint Task
+// gulp.task('js', ['lint'], function() {
+//     return gulp.src(config.js.src)
+//         .pipe(jshint())
+//         .pipe(jshint.reporter('default'));
+// });
 
+// Compile Sass
+gulp.task('sass', ['compile'], function() {
+    return gulp.src(config.sass.src)
+        .pipe(sass())
+        .pipe(gulp.dest(config.sass.dest));
+});
+
+// Copy all static img
+gulp.task('img', function() {
+  return gulp.src(config.img.src)
   .pipe(imagemin({ 
-        optimizationLevel: 7, 
+        optimizationLevel: 1, 
         progressive: true, 
-        interlaced: true,
-        use: [jpegtran()]
+        // interlaced: true,
+        // use: [jpegtran()]
       }))
-    .pipe(gulp.dest('build/images'));
+    .pipe(gulp.dest(config.img.dest));
 });
 
 // // Reload Browser On File Change
 // gulp.task('sync', function() {
-//     browserSync.init( [buildDir + '**/*'], {
+//     browserSync.init( [destDir + '**/*'], {
 //         proxy: {
 //             host: "localhost",
 //             port: 8888
@@ -69,26 +77,57 @@ gulp.task('images', ['clean'], function() {
 //     });
 // });
 
-// gulp.task('deploy', function() {
-//     rsync({
-//         ssh: true,
-//         src: './build/',
-//         dest: 'user@hostname:/path/to/www',
-//         port: 22,
-//         recursive: true,
-//         syncDest: true,
-//         compareMode: 'checksum',
-//         args: ['--verbose']
-//     }, function(error, stdout, stderr, cmd) {
-//         notify({ message: stdout });
-//     });
-// });
+function copy (param) {
+    gulp.src(param.src)
+    .pipe(gulp.dest(param.dest));
+}
+
+gulp.task('chtml', function() {
+  copy(config.html);
+});
+
+gulp.task('cjs', function() {
+  copy(config.js);
+});
+
+gulp.task('ccss', function() {
+  copy(config.css);
+});
+
+gulp.task('cprof', function() {
+  copy(config.profile);
+});
+
+// TODO: use gulp-shell instead...
+gulp.task('deploy', function() { 
+  return gulp.src(config.dest)
+    .pipe(rsync({
+      root: config.dest,
+      port: 22,
+      username: config.rsync.username,
+      hostname: config.rsync.hostname,
+      destination: config.rsync.dest,
+      exclude: [config.rsync.exclude],
+      // username: 'wmyers7',
+      // hostname: 'schizo.cs.byu.edu',
+      // destination: '~/public_html',
+      // exclude: ['node_modules'],
+      recursive: true,
+      update: true,
+      times: true,
+      clean: true, // delete all files and directories not in source paths 
+      args: ['--verbose']
+      // compareMode: 'checksum',
+      // syncDest: true,
+      // progress: true,
+    }));
+});
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
+  gulp.watch(config.js.src, ['js']);
+  gulp.watch(config.img.src, ['img']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['watch', 'scripts', 'images']);
+gulp.task('default', ['watch', 'js', 'img']);

@@ -1,0 +1,38 @@
+{
+  "rsync" : {
+    "username" : "wmyers7",
+    "hostname" : "schizo.cs.byu.edu",
+    "src": "",
+    "dest": "~/public_html",
+    "exclude" : "node_modules"
+  },
+  "src": "src/**/*",
+  "dest": "dist/",
+  "profile": {
+      "src": ["src/profile/**/*", "!src/profile/img/**/*", "!src/profile/sass/**/*"],
+      "dest": "dist/profile/"
+  },
+  "html": {
+      "src": "src/**/*.html ",
+      "dest": "dist/"
+  },
+  "img": {
+      "src": "src/img/**/* ",
+      "dest": "dist/img"
+  },
+  "js": {
+      "src": ["src/js/**/*.js"],
+      "dest": "dist/js"
+  },
+  "css": {
+      "src": "src/css/**/*",
+      "dest": "dist/css"
+  },
+  "sass": {
+      "src": "src/sass/**/*.scss",
+      "dest": "dist/css"
+  }
+}
+
+
+
