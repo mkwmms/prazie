@@ -814,7 +814,7 @@ input[type="reset"].small,
 	background-attachment: scroll, scroll, scroll, fixed;
 	background-color: #645862;
 	/*FIXME: cannot remove the svg images without the website breaking...*/
-	background-image: url("img/light-bl.svg"), url("img/light-br.svg"), url("img/overlay.png"), url("../img/banner.jpg");
+	background-image: url("img/light-bl.svg"), url("img/light-br.svg"), url(), url("../img/banner.jpg");
 	background-position: bottom left, bottom right, top left, top center;
 	background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 	background-size: 25em, 25em, auto, cover;
@@ -915,7 +915,7 @@ body.index #main {
 	background-attachment: scroll, scroll, scroll, fixed;
 	background-color: #645862;
 	/*FIXME: cannot remove the svg images without the website breaking...*/
-	background-image: url("img/light-tl.svg"), url("img/light-tr.svg"), url("img/overlay.png"), url("../img/banner.jpg");
+	background-image: url("img/light-tl.svg"), url("img/light-tr.svg"), url(), url("../img/banner.jpg");
 	background-position: top left, top right, top left, bottom center;
 	background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 	background-size: 25em, 25em, auto, cover;
