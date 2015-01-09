@@ -560,8 +560,8 @@ input[type="button"].special,
 input[type="submit"].special,
 input[type="reset"].special,
 .button.special {
-	background: #83d3c9;
-	border-color: #83d3c9;
+	background: cadetblue;
+	border-color: cadetblue;
 	color: white !important;
 }
 
@@ -601,7 +601,7 @@ input[type="reset"].small,
 }
 
 .wrapper.style2 {
-	background-color: #83d3c9;
+	background-color: cadetblue;
 	/*FIXME: cannot remove the svg images without the website breaking...*/
 	background-image: url("img/light-bl.svg"), url("img/light-br.svg");
 	background-position: bottom left, bottom right;
@@ -680,7 +680,7 @@ input[type="reset"].small,
 
 #header nav ul li a {
 	border: solid 1px transparent;
-	color: inherit;
+	color: cadetblue;
 	display: inline-block;
 	line-height: 1em;
 	padding: 0.6em 0.75em;
@@ -814,7 +814,7 @@ input[type="reset"].small,
 	background-attachment: scroll, scroll, scroll, fixed;
 	background-color: #645862;
 	/*FIXME: cannot remove the svg images without the website breaking...*/
-	background-image: url("img/light-bl.svg"), url("img/light-br.svg"), url("img/overlay.png"), url("../img/banner.jpg");
+	background-image: url("img/light-bl.svg"), url("img/light-br.svg"), url(), url("../img/banner.jpg");
 	background-position: bottom left, bottom right, top left, top center;
 	background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 	background-size: 25em, 25em, auto, cover;
@@ -835,7 +835,7 @@ input[type="reset"].small,
 	-o-animation-fill-mode: forwards;
 	-ms-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
-	background: rgba(52, 27, 43, 0.5);
+	/*background: rgba(52, 27, 43, 0.5);*/
 	color: white;
 	display: inline-block;
 	opacity: 0;
@@ -915,7 +915,7 @@ body.index #main {
 	background-attachment: scroll, scroll, scroll, fixed;
 	background-color: #645862;
 	/*FIXME: cannot remove the svg images without the website breaking...*/
-	background-image: url("img/light-tl.svg"), url("img/light-tr.svg"), url("img/overlay.png"), url("../img/banner.jpg");
+	background-image: url("img/light-tl.svg"), url("img/light-tr.svg"), url(), url("../img/banner.jpg");
 	background-position: top left, top right, top left, bottom center;
 	background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 	background-size: 25em, 25em, auto, cover;
