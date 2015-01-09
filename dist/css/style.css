@@ -560,8 +560,8 @@ input[type="button"].special,
 input[type="submit"].special,
 input[type="reset"].special,
 .button.special {
-	background: cadetblue;
-	border-color: cadetblue;
+	background: #83d3c9;
+	border-color: #83d3c9;
 	color: white !important;
 }
 
@@ -601,7 +601,7 @@ input[type="reset"].small,
 }
 
 .wrapper.style2 {
-	background-color: cadetblue;
+	background-color: #83d3c9;
 	/*FIXME: cannot remove the svg images without the website breaking...*/
 	background-image: url("img/light-bl.svg"), url("img/light-br.svg");
 	background-position: bottom left, bottom right;
@@ -680,7 +680,7 @@ input[type="reset"].small,
 
 #header nav ul li a {
 	border: solid 1px transparent;
-	color: cadetblue;
+	color: inherit;
 	display: inline-block;
 	line-height: 1em;
 	padding: 0.6em 0.75em;
