@@ -13,13 +13,16 @@ var rsync = require('gulp-rsync');
 
 // https://www.npmjs.com/package/favicons/
 
-// Not all tasks need to use streams
+// TODO: cb function syntax?? what is cb??
 gulp.task('clean', function(cb) {
   del([config.js.dest, config.css.dest], cb);
 });
 
-var cmq = require('gulp-combine-media-queries');
+gulp.task('rm-dist', function(cb) {
+  del([config.dest], cb);
+});
 
+var cmq = require('gulp-combine-media-queries');
 gulp.task('cmq', function () {
   gulp.src(config.css.src)
     .pipe(cmq({
@@ -55,11 +58,12 @@ gulp.task('sass', ['compile'], function() {
         .pipe(gulp.dest(config.sass.dest));
 });
 
+// TODO: add function to resize images ala gulp-image-resize
 // Copy all static img
 gulp.task('img', function() {
   return gulp.src(config.img.src)
   .pipe(imagemin({ 
-        optimizationLevel: 1, 
+        optimizationLevel: 7, 
         progressive: true, 
         // interlaced: true,
         // use: [jpegtran()]
