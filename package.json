@@ -1,7 +1,7 @@
 {
   "name": "prazie",
   "version": "1.0.0",
-  "description": "## Purpose ## Website/App to allow individuals to find and book photographers for various events including tourist photography.",
+  "description": "Website/App to allow individuals to find and book photographers for various events including tourist photography.",
   "main": "gulpfile.js",
   "devDependencies": {
     "del": "^1.1.0",
@@ -31,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/mkwmms/prazie/issues"
   },
-  "homepage": "https://prazie.com",
+  "homepage": "https://github.com/mkwmms/prazie"
 }

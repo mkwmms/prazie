@@ -82,20 +82,37 @@ function copy (param) {
     .pipe(gulp.dest(param.dest));
 }
 
-gulp.task('chtml', function() {
+gulp.task('cphtml', function() {
   copy(config.html);
 });
 
-gulp.task('cjs', function() {
+gulp.task('cpjs', function() {
   copy(config.js);
 });
 
-gulp.task('ccss', function() {
+gulp.task('cpcss', function() {
   copy(config.css);
 });
 
-gulp.task('cprof', function() {
+gulp.task('cpprof', function() {
   copy(config.profile);
+});
+
+gulp.task('cpimg', function() {
+  copy(config.img);
+});
+
+gulp.task('cpfonts', function() {
+  copy(config.fonts);
+});
+
+gulp.task('cpall', function() {
+  copy(config.html);
+  copy(config.js);
+  copy(config.css);
+  copy(config.profile);
+  copy(config.img);
+  copy(config.fonts);
 });
 
 // TODO: use gulp-shell instead...

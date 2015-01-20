@@ -31,6 +31,10 @@
   "sass": {
       "src": "src/sass/**/*.scss",
       "dest": "dist/css"
+  },
+  "fonts": {
+      "src": "src/fonts/**/*",
+      "dest": "dist/fonts"
   }
 }
 
