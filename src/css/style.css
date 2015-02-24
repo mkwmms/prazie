@@ -561,7 +561,7 @@ input[type="submit"].special,
 input[type="reset"].special,
 .button.special {
 	background: white;
-	border-color: cadetblue;
+	border-color: transparent;
 	color: black !important;
 }
 
@@ -569,8 +569,9 @@ input[type="button"].special:hover,
 input[type="submit"].special:hover,
 input[type="reset"].special:hover,
 .button.special:hover {
-	background: #96dad1 !important;
-	border-color: #96dad1 !important;
+	background:transparent !important;
+	border-color: black !important;
+	/*this is the sign up button color*/
 }
 
 input[type="button"].fit,
@@ -686,6 +687,7 @@ input[type="reset"].small,
 	padding: 0.6em 0.75em;
 	text-decoration: none;
 	background:white;
+	/*nav color change*/
 }
 
 #header nav ul li input[type="button"],
@@ -801,8 +803,9 @@ input[type="reset"].small,
 }
 
 .dropotron > li:hover > a {
-	background: #83d3c9;
+	background: black;
 	color: white;
+	/*this is the nav drop down color*/
 }
 
 .dropotron > li:first-child {
