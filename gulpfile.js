@@ -9,7 +9,14 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cached');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
-var rsync = require('gulp-rsync');
+
+// AWS deployment
+var fs = require('fs');
+var credentials = JSON.parse(fs.readFileSync('aws-credentials.json', 'utf8'));
+var publisher = awspublish.create(credentials);
+var parallelize = require("concurrent-transform");
+var awspublish = require('../');
+
 
 // https://www.npmjs.com/package/favicons/
 
@@ -23,7 +30,7 @@ gulp.task('rm-dist', function(cb) {
 });
 
 var cmq = require('gulp-combine-media-queries');
-gulp.task('cmq', function () {
+gulp.task('cmq', function() {
   gulp.src(config.css.src)
     .pipe(cmq({
       log: true
@@ -36,10 +43,10 @@ gulp.task('js', ['clean'], function() {
   // with sourcemaps all the way down
   return gulp.src(config.js.src)
     .pipe(sourcemaps.init())
-      // .pipe(coffee())
-      .pipe(jshint())
-      .pipe(uglify())
-      .pipe(concat('all.min.js'))
+    // .pipe(coffee())
+    .pipe(jshint())
+    .pipe(uglify())
+    .pipe(concat('all.min.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.js.dest));
 });
@@ -53,21 +60,21 @@ gulp.task('js', ['clean'], function() {
 
 // Compile Sass
 gulp.task('sass', ['compile'], function() {
-    return gulp.src(config.sass.src)
-        .pipe(sass())
-        .pipe(gulp.dest(config.sass.dest));
+  return gulp.src(config.sass.src)
+    .pipe(sass())
+    .pipe(gulp.dest(config.sass.dest));
 });
 
 // TODO: add function to resize images ala gulp-image-resize
 // Copy all static img
 gulp.task('img', function() {
   return gulp.src(config.img.src)
-  .pipe(imagemin({ 
-        optimizationLevel: 7, 
-        progressive: true, 
-        // interlaced: true,
-        // use: [jpegtran()]
-      }))
+    .pipe(imagemin({
+      optimizationLevel: 7,
+      progressive: true,
+      // interlaced: true,
+      // use: [jpegtran()]
+    }))
     .pipe(gulp.dest(config.img.dest));
 });
 
@@ -81,8 +88,9 @@ gulp.task('img', function() {
 //     });
 // });
 
-function copy (param) {
-    gulp.src(param.src)
+
+function copy(param) {
+  gulp.src(param.src)
     .pipe(gulp.dest(param.dest));
 }
 
@@ -119,29 +127,12 @@ gulp.task('cpall', function() {
   copy(config.fonts);
 });
 
-// TODO: use gulp-shell instead...
-gulp.task('deploy', function() { 
-  return gulp.src(config.dest)
-    .pipe(rsync({
-      root: config.dest,
-      port: 22,
-      username: config.rsync.username,
-      hostname: config.rsync.hostname,
-      destination: config.rsync.dest,
-      exclude: [config.rsync.exclude],
-      // username: 'wmyers7',
-      // hostname: 'schizo.cs.byu.edu',
-      // destination: '~/public_html',
-      // exclude: ['node_modules'],
-      recursive: true,
-      update: true,
-      times: true,
-      clean: true, // delete all files and directories not in source paths 
-      args: ['--verbose']
-      // compareMode: 'checksum',
-      // syncDest: true,
-      // progress: true,
-    }));
+// AWS deployment
+gulp.task('deploy', function() {
+  return gulp
+    .src('config.dest')
+    .pipe(parallelize(publisher.publish(), 50))
+    .pipe(awspublish.reporter());
 });
 
 // Rerun the task when a file changes

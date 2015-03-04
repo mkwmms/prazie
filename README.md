@@ -5,11 +5,11 @@ Website/App to allow individuals to find and book photographers for various even
 
 ## Catagories ##
 
-1. Wedding 
+1. Wedding
 2. Birthday
 3. Parties
 4. Vacation
-5. Family Portraits 
+5. Family Portraits
 
 ## Revenue ##
 - prazie will collect a percentage of every booking from website or App
@@ -28,7 +28,7 @@ Website/App to allow individuals to find and book photographers for various even
 - Website design
     + open format for individuals to upload content
     + secure payment system.
-- App design 
+- App design
     + similar to needs of full website
 - Capital to higher individuals for design and website backend
 - Marketing to increase numbers of  photographer profiles in all major markets and tourist countries.
