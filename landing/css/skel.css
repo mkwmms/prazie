@@ -17,7 +17,7 @@
 		margin-right: auto;
 
 		/* width: (containers) */
-		width: 1200px;
+		width: 35em;
 	}
 
 	/* Modifiers */
@@ -27,17 +27,17 @@
 				width: 100%;
 
 				/* max-width: (containers * 1.25) */
-				max-width: 1500px;
+				max-width: 43.75em;
 
 				/* min-width: (containers) */
-				min-width: 1200px;
+				min-width: 35em;
 			}
 
 		/* 75% */
 			.container.\37 5\25 {
 
 				/* width: (containers * 0.75) */
-				width: 900px;
+				width: 26.25em;
 
 			}
 
@@ -45,7 +45,7 @@
 			.container.\35 0\25 {
 
 				/* width: (containers * 0.50) */
-				width: 600px;
+				width: 17.5em;
 
 			}
 
@@ -53,7 +53,7 @@
 			.container.\32 5\25 {
 
 				/* width: (containers * 0.25) */
-				width: 300px;
+				width: 8.75em;
 
 			}
 
@@ -88,110 +88,110 @@
 
 			.row > * {
 				/* padding: (gutters.horizontal) 0 0 (gutters.vertical) */
-				padding: 40px 0 0 40px;
+				padding: 0 0 0 1.5em;
 			}
 
 			.row {
 				/* margin: -(gutters.horizontal) 0 -1px -(gutters.vertical) */
-				margin: -40px 0 -1px -40px;
+				margin: 0 0 -1px -1.5em;
 			}
 
 			.row.uniform > * {
 				/* padding: (gutters.vertical) 0 0 (gutters.vertical) */
-				padding: 40px 0 0 40px;
+				padding: 1.5em 0 0 1.5em;
 			}
 
 			.row.uniform {
 				/* margin: -(gutters.vertical) 0 -1px -(gutters.vertical) */
-				margin: -40px 0 -1px -40px;
+				margin: -1.5em 0 -1px -1.5em;
 			}
 
 		/* 200% */
 
 			.row.\32 00\25 > * {
 				/* padding: (gutters.horizontal) 0 0 (gutters.vertical) */
-				padding: 80px 0 0 80px;
+				padding: 0 0 0 3em;
 			}
 
 			.row.\32 00\25 {
 				/* margin: -(gutters.horizontal) 0 -1px -(gutters.vertical) */
-				margin: -80px 0 -1px -80px;
+				margin: 0 0 -1px -3em;
 			}
 
 			.row.uniform.\32 00\25 > * {
 				/* padding: (gutters.vertical) 0 0 (gutters.vertical) */
-				padding: 80px 0 0 80px;
+				padding: 3em 0 0 3em;
 			}
 
 			.row.uniform.\32 00\25 {
 				/* margin: -(gutters.vertical) 0 -1px -(gutters.vertical) */
-				margin: -80px 0 -1px -80px;
+				margin: -3em 0 -1px -3em;
 			}
 
 		/* 150% */
 
 			.row.\31 50\25 > * {
 				/* padding: (gutters.horizontal) 0 0 (gutters.vertical) */
-				padding: 60px 0 0 60px;
+				padding: 0 0 0 2.25em;
 			}
 
 			.row.\31 50\25 {
 				/* margin: -(gutters.horizontal) 0 -1px -(gutters.vertical) */
-				margin: -60px 0 -1px -60px;
+				margin: 0 0 -1px -2.25em;
 			}
 
 			.row.uniform.\31 50\25 > * {
 				/* padding: (gutters.vertical) 0 0 (gutters.vertical) */
-				padding: 60px 0 0 60px;
+				padding: 2.25em 0 0 2.25em;
 			}
 
 			.row.uniform.\31 50\25 {
 				/* margin: -(gutters.vertical) 0 -1px -(gutters.vertical) */
-				margin: -60px 0 -1px -60px;
+				margin: -2.25em 0 -1px -2.25em;
 			}
 
 		/* 50% */
 
 			.row.\35 0\25 > * {
 				/* padding: (gutters.horizontal) 0 0 (gutters.vertical) */
-				padding: 20px 0 0 20px;
+				padding: 0 0 0 0.75em;
 			}
 
 			.row.\35 0\25 {
 				/* margin: -(gutters.horizontal) 0 -1px -(gutters.vertical) */
-				margin: -20px 0 -1px -20px;
+				margin: 0 0 -1px -0.75em;
 			}
 
 			.row.uniform.\35 0\25 > * {
 				/* padding: (gutters.vertical) 0 0 (gutters.vertical) */
-				padding: 20px 0 0 20px;
+				padding: 0.75em 0 0 0.75em;
 			}
 
 			.row.uniform.\35 0\25 {
 				/* margin: -(gutters.vertical) 0 -1px -(gutters.vertical) */
-				margin: -20px 0 -1px -20px;
+				margin: -0.75em 0 -1px -0.75em;
 			}
 
 		/* 25% */
 
 			.row.\32 5\25 > * {
 				/* padding: (gutters.horizontal) 0 0 (gutters.vertical) */
-				padding: 10px 0 0 10px;
+				padding: 0 0 0 0.375em;
 			}
 
 			.row.\32 5\25 {
 				/* margin: -(gutters.horizontal) 0 -1px -(gutters.vertical) */
-				margin: -10px 0 -1px -10px;
+				margin: 0 0 -1px -0.375em;
 			}
 
 			.row.uniform.\32 5\25 > * {
 				/* padding: (gutters.vertical) 0 0 (gutters.vertical) */
-				padding: 10px 0 0 10px;
+				padding: 0.375em 0 0 0.375em;
 			}
 
 			.row.uniform.\32 5\25 {
 				/* margin: -(gutters.vertical) 0 -1px -(gutters.vertical) */
-				margin: -10px 0 -1px -10px;
+				margin: -0.375em 0 -1px -0.375em;
 			}
 
 		/* 0% */

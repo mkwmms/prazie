@@ -1,38 +1,18 @@
+@import 'vars';
+@import 'mixins';
+
 /*
-	Aerial by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Highlights by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
 */
 
-@import '../vars';
-@import '../mixins';
+/* Loader */
 
-/* Wrapper */
-
-	#wrapper {
-		opacity: 1;
-	}
-	
-/* Overlay */
-
-	#overlay {
-		opacity: 1;
-	}
-	
-/* Header */
-
-	#header {
-		opacity: 1;
-
-		nav {
-			li {
-				opacity: 1;
+	html {
+		body {
+			&:before, &:after {
+				display: none !important;
 			}
 		}
-	}
-	
-/* Footer */
-
-	#footer {
-		background-image: url('images/footer.svg');
 	}
