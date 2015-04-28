@@ -7,6 +7,7 @@
     "exclude" : "node_modules"
   },
   "src": "src/**/*",
+  "dist": "./landing/**/*",
   "dest": "dist/",
   "profile": {
       "src": ["src/profile/**/*", "!src/profile/img/**/*", "!src/profile/sass/**/*"],
@@ -35,6 +36,10 @@
   "fonts": {
       "src": "src/fonts/**/*",
       "dest": "dist/fonts"
+  },
+  "aws":{
+      "bucket": "prazie.com",
+      "region": "us-west-2"
   }
 }
 

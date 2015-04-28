@@ -10,13 +10,6 @@ var cache = require('gulp-cached');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 
-// AWS deployment
-var fs = require('fs');
-var credentials = JSON.parse(fs.readFileSync('aws-credentials.json', 'utf8'));
-var publisher = awspublish.create(credentials);
-var parallelize = require("concurrent-transform");
-var awspublish = require('../');
-
 
 // https://www.npmjs.com/package/favicons/
 
@@ -88,7 +81,6 @@ gulp.task('img', function() {
 //     });
 // });
 
-
 function copy(param) {
   gulp.src(param.src)
     .pipe(gulp.dest(param.dest));
@@ -128,11 +120,35 @@ gulp.task('cpall', function() {
 });
 
 // AWS deployment
+var parallelize = require('concurrent-transform');
+var awspublish = require('gulp-awspublish');
+// create a new publisher using S3 options
+// http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property
+var publisher = awspublish.create({
+    bucket: config.aws.bucket,
+    region: config.aws.region
+});
+
+// define custom headers
+var headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public'
+};
+
 gulp.task('deploy', function() {
-  return gulp
-    .src('config.dest')
-    .pipe(parallelize(publisher.publish(), 50))
+  return gulp.src(config.dist)
+     // gzip, Set Content-Encoding headers and add .gz extension
+    .pipe(parallelize(publisher.publish(headers, 'force'), 50))
+    .pipe(publisher.cache())
     .pipe(awspublish.reporter());
+});
+
+gulp.task('sync', function() {
+    gulp.src(config.dist)
+    .pipe(publisher.publish())
+    .pipe(publisher.sync())
+    .pipe(awspublish.reporter({
+        states: ['create', 'update', 'delete']
+    }));
 });
 
 // Rerun the task when a file changes
