@@ -289,7 +289,18 @@
 
 }
 }
-
+/*logo*/
+.logo{
+    position: relative;
+    background-size: 100%;
+    height:75px;
+    width:75px;
+    background: url("prazie/landing/images/prazielogo.jpg") no-repeat;
+    display: inline-block;
+    float:left;
+    padding-left:10px;
+    padding-top: 10px;
+}
 /* Section/Article */
 
     section.special, article.special {
