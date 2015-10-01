@@ -110,3 +110,31 @@
 			margin: 0;
 			padding: 0;
 		}
+		
+		@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+			#header header {
+		padding-bottom: 9em;
+		width: 81%;
+	}
+
+	
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
