@@ -291,6 +291,7 @@
 }
 /*logo*/
 .logo{
+<<<<<<< Updated upstream
     position: relative;
     background-size: 100%;
     height:75px;
@@ -300,6 +301,13 @@
     float:left;
     padding-left:10px;
     padding-top: 10px;
+=======
+	position: relative;
+	background-size: 100%;
+	height:100px;
+	width:100px;
+	display: inline-block;
+>>>>>>> Stashed changes
 }
 /* Section/Article */
 
